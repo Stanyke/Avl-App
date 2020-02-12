@@ -116,7 +116,7 @@ app.get('/', (req, res) =>
 
 			if (myres.rows)
 			{
-				res.status(200).json({"resturants_open_today": myres.rows}); 
+				res.status(200).json({"resturants_open_today": myres.rows});
 			}
 		});
 	}
