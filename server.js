@@ -2,7 +2,7 @@ const app = require('./app');
 
 const client = require('./db/connectDB');
 
-const justRoute = require('./routes/just');
+const resturantRoute = require('./routes/resturant');
 
 const port = process.env.PORT || 3000;
 
