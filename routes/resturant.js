@@ -145,7 +145,7 @@ app.get('/:day/:time', (req, res) =>
 
 		if (!Uresult.rows[0])
 		{
-			res.status(400).send("Day with time value does not exist")
+			res.status(400).send("Day with such time does not exist")
 		}
 
 		if (Uresult.rows[0])
