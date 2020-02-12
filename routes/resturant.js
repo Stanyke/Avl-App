@@ -134,7 +134,7 @@ app.get('/:day', (req, res) =>
 
 	if (userCurrentDay === 0)
 	{
-		client.query(`SELECT * FROM resturants WHERE monday = '${queuedDate}'`, (Uerr, Uresult) => 
+		client.query(`SELECT * FROM resturants WHERE sunday = '${queuedDate}'`, (Uerr, Uresult) => 
 		{
 			if (Uerr)
 			{
@@ -158,7 +158,7 @@ app.get('/:day', (req, res) =>
 
 	else if (userCurrentDay === 1)
 	{
-		client.query(`SELECT * FROM resturants WHERE sunday = '${queuedDate}'`, (Uerr, Uresult) => 
+		client.query(`SELECT * FROM resturants WHERE monday = '${queuedDate}'`, (Uerr, Uresult) => 
 		{
 			if (Uerr)
 			{
@@ -167,7 +167,7 @@ app.get('/:day', (req, res) =>
 
 			if (!Uresult.rows[0])
 			{
-				res.status(400).send("User's Todo with such ID does not exist")
+				res.status(400).send("Day with such value does not exist")
 			}
 
 			if (Uresult.rows[0])
