@@ -122,65 +122,39 @@ app.get('/', (req, res) =>
 	}
 });
 
-app.get('/:day', (req, res) =>
+
+
+app.get('/:day/:time', (req, res) =>
 {
-	const queuedDate = req.params.day;
+	const queuedDay = req.params.day;
+
+	const queuedTime = req.params.time;
 
 
-	if (!queuedDate)
+	if (!queuedDay || !queuedTime)
     {
-        res.status(400).send('Please provide a day');
+        res.status(400).send('Please provide a day or time');
 	}
 
-	if (userCurrentDay === 0)
+	client.query(`SELECT * FROM resturants WHERE ${queuedDay} LIKE '${queuedTime}%'`, (Uerr, Uresult) => 
 	{
-		client.query(`SELECT * FROM resturants WHERE sunday = '${queuedDate}'`, (Uerr, Uresult) => 
+		if (Uerr)
 		{
-			if (Uerr)
-			{
-				res.status(500).send("We Encoutered An Error Getting Resturants Details");
-			}
+			res.status(500).send("We Encoutered An Error Getting Resturants Details");
+		}
 
-			if (!Uresult.rows[0])
-			{
-				res.status(400).send("Day with such value does not exist")
-			}
-
-			if (Uresult.rows[0])
-			{
-				res.status(200).json({
-					"resturants_open_such_date": Uresult.rows
-				});
-			}
-		});
-	}
-
-
-	else if (userCurrentDay === 1)
-	{
-		client.query(`SELECT * FROM resturants WHERE monday = '${queuedDate}'`, (Uerr, Uresult) => 
+		if (!Uresult.rows[0])
 		{
-			if (Uerr)
-			{
-				res.status(500).send("We Encoutered An Error Getting Resturants Details");
-			}
+			res.status(400).send("Day with time value does not exist")
+		}
 
-			if (!Uresult.rows[0])
-			{
-				res.status(400).send("Day with such value does not exist")
-			}
-
-			if (Uresult.rows[0])
-			{
-				res.status(200).json({
-					"resturants_open_such_date": Uresult.rows
-				});
-			}
-		});
-	}
-    
-	
-	
+		if (Uresult.rows[0])
+		{
+			res.status(200).json({
+				"resturants_open_such_date": Uresult.rows
+			});
+		}
+	});
 });
 
 const resturantRoute = app;
