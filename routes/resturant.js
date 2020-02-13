@@ -15,7 +15,7 @@ app.get('/', (req, res) =>
 		{
 			if (derr)
 			{
-				res.status(500).send("We Encoutered An Error Getting Resturants");
+				res.status(500).send("We Encoutered An Error Getting Restaurants");
 			}
 
 			if (myres.rows)
@@ -31,7 +31,7 @@ app.get('/', (req, res) =>
 		{
 			if (derr)
 			{
-				res.status(500).send("We Encoutered An Error Getting Resturants");
+				res.status(500).send("We Encoutered An Error Getting Restaurants");
 			}
 
 			if (myres.rows)
@@ -47,7 +47,7 @@ app.get('/', (req, res) =>
 		{
 			if (derr)
 			{
-				res.status(500).send("We Encoutered An Error Getting Resturants");
+				res.status(500).send("We Encoutered An Error Getting Restaurants");
 			}
 
 			if (myres.rows)
@@ -63,7 +63,7 @@ app.get('/', (req, res) =>
 		{
 			if (derr)
 			{
-				res.status(500).send("We Encoutered An Error Getting Resturants");
+				res.status(500).send("We Encoutered An Error Getting Restaurants");
 			}
 
 			if (myres.rows)
@@ -79,7 +79,7 @@ app.get('/', (req, res) =>
 		{
 			if (derr)
 			{
-				res.status(500).send("We Encoutered An Error Getting Resturants");
+				res.status(500).send("We Encoutered An Error Getting Restaurants");
 			}
 
 			if (myres.rows)
